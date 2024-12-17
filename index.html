@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the World of Slime</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; background-color: #fdfdfd; color: #333; }
+        header { background-color: #ffcccb; padding: 20px 0; box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); }
+        header h1 { margin: 0; color: #555; font-size: 2.5em; }
+        p { font-size: 1.1em; margin: 15px 0; color: #444; }
+        .services, .products { margin: 20px auto; max-width: 800px; background-color: #fff; border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); padding: 20px; }
+        h2 { color: #444; border-bottom: 2px solid #ffcccb; margin-bottom: 10px; }
+        button { background-color: #ff6f61; color: white; border: none; padding: 10px 20px; font-size: 1.1em; margin: 10px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease; }
+        button:hover { background-color: #ff483d; }
+        img { max-width: 100%; border-radius: 10px; margin: 10px; }
+        footer { background-color: #555; color: white; padding: 10px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the World of Slime</h1>
+    </header>
+    <div class="products">
+        <h2>Our Products</h2>
+        <img src="images/slime_deco1.jpg" alt="Slime Decoration 1">
+        <img src="images/slime_deco2.jpg" alt="Slime Decoration 2">
+        <h3>Choose Your Slime Version:</h3>
+        <button onclick="location.href='page2.html?type=white'">Slime: White Version - $13.9</button>
+        <button onclick="location.href='page2.html?type=clear'">Slime: Clear Version - $13.9</button>
+    </div>
+    <div class="services">
+        <h2>Our Main Services</h2>
+        <p><strong>Slime DIY Consultation:</strong> Answering questions during production.</p>
+        <p><strong>Customized Service:</strong> Create exclusive slimes according to your needs.</p>
+    </div>
+    <footer>
+        &copy; 2024 Slime World. All Rights Reserved.
+    </footer>
+</body>
+</html>

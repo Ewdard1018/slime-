@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Decorations</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; background-color: #f8f9fa; }
+        .item { display: inline-block; margin: 10px; text-align: center; background: #fff; padding: 10px; border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); }
+        img { max-width: 150px; margin-bottom: 10px; border-radius: 10px; }
+        button { padding: 5px 10px; background: #ff6f61; color: white; border: none; border-radius: 5px; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #ff483d; }
+        h1 { color: #333; }
+        .cart-summary { margin: 20px auto; max-width: 600px; background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); }
+        footer { margin-top: 20px; color: #555; }
+    </style>
+</head>
+<body>
+    <h1>Choose Your Decorations</h1>
+    <p>Each item costs $3.0 / 20g, and additional options cost $1.0 / time.</p>
+
+    <!-- Items Section -->
+    <div class="item">
+        <img src="images/sugar_granules.jpg" alt="Sugar Granules">
+        <p>Simulated Sugar Granules</p>
+        <button onclick="addToCart('Simulated Sugar Granules', 3.0)">Add</button>
+    </div>
+    <div class="item">
+        <img src="images/rice_grains.jpg" alt="Rice Grains">
+        <p>Simulated Rice Grains</p>
+        <button onclick="addToCart('Simulated Rice Grains', 3.0)">Add</button>
+    </div>
+    <div class="item">
+        <img src="images/oreo_chips.jpg" alt="Oreo Chips">
+        <p>Simulated Oreo Chips</p>
+        <button onclick="addToCart('Simulated Oreo Chips', 3.0)">Add</button>
+    </div>
+    <div class="item">
+        <img src="images/ice_fragments.jpg" alt="Ice Fragments">
+        <p>Simulated Ice Fragments</p>
+        <button onclick="addToCart('Simulated Ice Fragments', 3.0)">Add</button>
+    </div>
+    <div class="item">
+        <img src="images/quicksand_powder.jpg" alt="Quicksand Powder">
+        <p>Quicksand Powder</p>
+        <button onclick="addToCart('Quicksand Powder', 1.0)">Add</button>
+    </div>
+    <div class="item">
+        <img src="images/pigment.jpg" alt="Pigment">
+        <p>Pigment</p>
+        <button onclick="addToCart('Pigment', 1.0)">Add</button>
+    </div>
+
+    <!-- Cart Summary Section -->
+    <div class="cart-summary">
+        <h2>Your Selected Items</h2>
+        <ul id="cart-items" style="list-style: none; padding: 0;"></ul>
+        <p>Total: $<span id="total">0.00</span></p>
+        <button onclick="goToPayment()">Go to Payment</button>
+    </div>
+
+    <footer>
+        &copy; 2024 Slime World. Select your favorite decorations and enjoy creating your slime!
+    </footer>
+
+    <!-- JavaScript for Cart Logic -->
+    <script>
+        let cart = [];
+        function addToCart(item, price) {
+            const existingItem = cart.find(cartItem => cartItem.name === item);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name: item, price: price, quantity: 1 });
+            }
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            const cartContainer = document.getElementById('cart-items');
+            cartContainer.innerHTML = '';
+            let total = 0;
+            cart.forEach(cartItem => {
+                const itemTotal = cartItem.price * cartItem.quantity;
+                total += itemTotal;
+                const li = document.createElement('li');
+                li.textContent = `${cartItem.name} - $${cartItem.price.toFixed(2)} x ${cartItem.quantity} = $${itemTotal.toFixed(2)}`;
+                cartContainer.appendChild(li);
+            });
+            document.getElementById('total').innerText = total.toFixed(2);
+        }
+
+        function goToPayment() {
+            const cartString = encodeURIComponent(JSON.stringify(cart));
+            location.href = 'page4.html?cart=' + cartString;
+        }
+    </script>
+</body>
+</html>
